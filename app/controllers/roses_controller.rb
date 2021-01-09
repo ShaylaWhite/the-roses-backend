@@ -1,0 +1,2 @@
+class RosesController < ApplicationController
+end
