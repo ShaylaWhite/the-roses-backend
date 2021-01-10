@@ -1,13 +1,13 @@
 class Api::V1::GradensController < ApplicationController
 
     def index
-       @gardens = Graden.all
+       @gardens = Garden.all
        render json: @gardens
      end 
 
      def create
         @garden = Garden.new(graden_params)
-         if @garden.
+         if @garden.save
             render json: @garden
          else
             render json {error: `Garden could not be created!`}
@@ -21,6 +21,9 @@ class Api::V1::GradensController < ApplicationController
   
 
      def destroy
+        @garden = Garden.find(params[:id])
+         @garden.destroy 
+
      end 
 
    
