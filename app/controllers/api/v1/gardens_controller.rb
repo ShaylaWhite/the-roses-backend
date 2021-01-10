@@ -1,4 +1,4 @@
-class Api::V1::GradensController < ApplicationController
+class Api::V1::GardensController < ApplicationController
 
     def index
        @gardens = Garden.all
@@ -10,8 +10,8 @@ class Api::V1::GradensController < ApplicationController
          if @garden.save
             render json: @garden
          else
-            render json {error: `Garden could not be created!`}
-         end 
+            render json: {error: 'Error creating account'}
+        end 
     end 
 
      def show
@@ -32,6 +32,4 @@ class Api::V1::GradensController < ApplicationController
      def garden_params
         params.require(:garden).permit(:name, :feels, :date)
      end
-end 
-
 end 

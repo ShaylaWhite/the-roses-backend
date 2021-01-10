@@ -17,7 +17,7 @@ class Api::V1::RosesController < ApplicationController
         if @rose.save
             render json: @rose
         else
-            render json {error: `Rose did not add to Garden!`}
+            render json: {error: 'Error creating account'}
 
         end 
     end 
