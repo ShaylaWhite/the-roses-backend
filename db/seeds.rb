@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-graden = Graden.create(name: 'lovely', feels:'okay day', date: Date.today)
+garden = Garden.create(name: 'lovely', feels:'okay day', date: Date.today)
 
-rose = Rose.create(graden_id:1, peatls:'joy', thorns:'dropped my drinks', water:'take a walk')
+rose = Rose.create(garden_id: 1, petals: 'joy', thorns: 'dropped my drinks', water: 'take a walk')
