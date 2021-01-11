@@ -1,9 +1,10 @@
 class Api::V1::RosesController < ApplicationController
 
+   before_action :pair_rose_to_garden
 
      def index
-        @roses = @garden.roses
-        render json: @roses
+      @roses = Rose.all
+      render json: @roses
      end 
 
 
