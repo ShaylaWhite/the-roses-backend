@@ -1,4 +1,4 @@
 class GardenSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :feels, :date
+  attributes :id, :name, :feels, :date
 end
