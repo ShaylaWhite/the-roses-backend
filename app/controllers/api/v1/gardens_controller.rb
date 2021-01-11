@@ -1,9 +1,10 @@
 class Api::V1::GardensController < ApplicationController
 
     def index
+   
        @gardens = Garden.all
        render json: @gardens
-     end 
+      end 
 
      def create
         @garden = Garden.new(graden_params)
