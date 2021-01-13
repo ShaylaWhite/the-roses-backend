@@ -18,20 +18,23 @@ class Api::V1::RosesController < ApplicationController
         if @rose.save
             render json: @rose
         else
-            render json: {error: 'Error creating account'}
+            render json: {error: 'Error creating rose'}
 
         end 
     end 
 
     def destroy 
-      @rose = Rose.find(params[:id])
+      @rose = Rose.find(params["id"])
+      @garden = Garden.find(@rose.garden_id)
       @rose.destroy
+      render json: @garden
+
   end
      private
 
      def pair_rose_to_garden
         @rose = Rose.find_by(params[:garden_id]
-       #/api/v1/gardens/v1/roses
+       #/api/v1/garden/v1/roses
      end 
    
      def rose_params
