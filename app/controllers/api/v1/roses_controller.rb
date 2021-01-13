@@ -23,9 +23,10 @@ class Api::V1::RosesController < ApplicationController
         end 
     end 
 
-     def destroy
-     end 
-
+    def destroy 
+      @rose = Rose.find(params[:id])
+      @rose.destroy
+  end
      private
 
      def pair_rose_to_garden
