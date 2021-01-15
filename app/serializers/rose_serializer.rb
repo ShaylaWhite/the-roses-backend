@@ -1,4 +1,4 @@
 class RoseSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :garden_id, :petals, :thorns, :water, :id
+  attributes :id, :petals, :thorns, :water, :garden_id
 end

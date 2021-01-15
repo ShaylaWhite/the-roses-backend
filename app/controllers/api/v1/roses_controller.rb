@@ -1,6 +1,6 @@
 class Api::V1::RosesController < ApplicationController
 
-   before_action :pair_rose_to_garden
+   before_action :set_garden
 
      def index
       @roses = Rose.all
@@ -9,35 +9,34 @@ class Api::V1::RosesController < ApplicationController
 
 
      def show 
-        @rose = Rose.find(params[:id])
+        @rose = @game.rose.find_by(params[:id])
         render json: @rose
      end 
 
      def create 
-        @rose = @garden.roses.new(rose_params)
-        if @rose.save
-            render json: @rose
-        else
-            render json: {error: 'Error creating rose'}
-
-        end 
-    end 
+      @rose = @garden.roses.new(rose_params)
+      if @rose.save
+         render json: @rose
+      else
+         render json: {error: 'Error creating rose'}
+      end 
+   end
 
     def destroy 
       @rose = Rose.find(params["id"])
       @garden = Garden.find(@rose.garden_id)
       @rose.destroy
       render json: @garden
+    end
 
-  end
      private
 
-     def pair_rose_to_garden
-        @rose = Rose.find_by(params[:garden_id]
-       #/api/v1/garden/v1/roses
+     def set_garden
+        @garden = Garden.find(params[:garden_id])
      end 
    
      def rose_params
         params.require(:rose).permit(:garden_id, :petals, :thorns, :water)
      end
+
 end 
