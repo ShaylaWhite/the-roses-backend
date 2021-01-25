@@ -3,13 +3,13 @@ class Api::V1::GardensController < ApplicationController
     def index
    
        @gardens = Garden.all
-       render json: @gardens
+       render json: GardenSerializer.new(@gardens)
       end 
 
      def create
         @garden = Garden.new(garden_params)
          if @garden.save
-            render json: @garden
+            render json: GardenSerializer.new(@garden)
          else
             render json: {error: 'Error creating account'}
         end 
@@ -17,8 +17,8 @@ class Api::V1::GardensController < ApplicationController
 
      def show
         @garden = Garden.find(params[:id])
-        render json: @garden
-    end 
+        render json: GardenSerializer.new(@garden)
+      end 
   
 
      def destroy
